@@ -93,28 +93,6 @@ char* diff_custom_numbers(char* number1, char* number2, int basic)
     return result;
 }
 
-void longer_number(char*& input_number, long long int target_len)
-{
-    long long int input_len = strlen(input_number);
-    if(input_len>= target_len) return;
-
-    char* result_number = new char[target_len+1];
-    long long int len_delta = target_len-input_len;
-
-    for(long long int i=0;i<len_delta;++i)
-    {
-        result_number[i]='0';
-    }
-    for(long long int i=len_delta;i<target_len;++i)
-    {
-        result_number[i] = input_number[i-len_delta];
-    }
-    result_number[target_len]='\0';
-
-    delete[] input_number;
-    input_number = result_number;
-}
-
 int char_to_value(char c)
 {
     if(c>='0' && c<= '9')return c-'0';
@@ -129,35 +107,4 @@ char value_to_char(int value)
     else if(value>=10 && value<=35)return static_cast<char>(value + 'A' -10);
     else if(value>=36 && value <= 61)return static_cast<char>(value + 'a' -36);
     else return '\0';
-}
-
-bool is_bigger(char* number1, char* number2)
-{
-    long long int max_len;
-    bool result = false;
-
-    long long int len_num1 = strlen(number1), len_num2 = strlen(number2);
-    if(len_num1==len_num2)max_len = len_num1;
-    else max_len = (len_num1 >= len_num2) ? len_num1 + 1 : len_num2 + 1;
-
-    char* num1 = new char[max_len];
-    strcpy(num1, number1);
-    char* num2 = new char[max_len];
-    strcpy(num2, number2);
-    longer_number(num1, max_len);
-    longer_number(num2, max_len);
-
-    for(int i = 0;i<max_len;++i)
-    {
-        if(num1[i]>num2[i])
-        {
-            result = true;
-            break;
-        }
-    }
-
-    delete[] num1;
-    delete[] num2;
-    std::cout<<"yes\n";
-    return result;
 }

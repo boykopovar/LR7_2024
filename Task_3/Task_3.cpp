@@ -37,7 +37,11 @@ void task3()
         else if(sign1=='-')sign1=-1;
 
         number1 = get_custom_number(basic);
-        if(number1[0]=='\0')delete[] number1;
+        if(number1[0]=='\0')
+        {
+            delete[] number1;
+            sign1=1;
+        }
         else break;
     }
     while(true)

@@ -1,4 +1,3 @@
-#pragma once
 #include <iostream>
 
 #include "task_2.h"
@@ -8,11 +7,11 @@
 char* sum_of_binary(char* number_1, int sign_1, char* number_2, int sign_2)
 {
     long long int len_num1 = strlen(number_1), len_num2 = strlen(number_2);
-    long long int max_len = len_num1>=len_num2 ? len_num1 + 1 : len_num2 + 1;
+    long long int max_len = len_num1>=len_num2 ? len_num1 + 2 : len_num2 + 2;
     bool is_minus = false;
 
-    add_zeroes_to_bin(number_1, max_len);
-    add_zeroes_to_bin(number_2, max_len);
+    longer_number(number_1, max_len);
+    longer_number(number_2, max_len);
 
     if(sign_1 == -1)
     {
@@ -33,12 +32,18 @@ char* sum_of_binary(char* number_1, int sign_1, char* number_2, int sign_2)
         reverse_bits(answer);
         plus_one(answer);
     }
+    clean_zeroes(answer);
+    char bin_sign_to_add = '0';
+    if(sign_1 == -1 && sign_2 == -1) ;
+    else if( (sign_1 == -1 && is_bigger(number_1, number_2) ) ||
+             (sign_2 == -1 && is_bigger(number_2, number_1) ) ) bin_sign_to_add = '1';
+    char_to_start(bin_sign_to_add, answer);
+
     return answer;
 }
 
 char* bitwise_sum(const char* num1, const char* num2)
 {
-    std::cout<<"Побитовое сложение:\n"<<num1<<'\n'<<num2<<'\n';
     unsigned int len = strlen(num1), len2 = strlen(num2);
     if(len!=len2)
     {
@@ -65,28 +70,6 @@ char* bitwise_sum(const char* num1, const char* num2)
     return sum;
 }
 
-void add_zeroes_to_bin(char*& input_number, long long int target_len)
-{
-    long long int input_len = strlen(input_number);
-    if(input_len>= target_len) return;
-
-    char* result_number = new char[target_len+1];
-    long long int len_delta = target_len-input_len;
-
-    for(long long int i=0;i<len_delta;++i)
-    {
-        result_number[i]='0';
-    }
-    for(long long int i=len_delta;i<target_len;++i)
-    {
-        result_number[i] = input_number[i-len_delta];
-    }
-    result_number[target_len]='\0';
-
-    delete[] input_number;
-    input_number = result_number;
-}
-
 void plus_one(char*& number)
 {
     long long int len = strlen(number);
@@ -107,9 +90,28 @@ void plus_one(char*& number)
 char* input_bin_number(int& back_sign_of_input)
 {
     char* result_number;
+    bool error = false;
     while(true)
     {
+        if(error)std::cout<<"Неправильный ввод, повторите попытку: ";
         char sign_char1 = static_cast<char>(getchar());
+        if(sign_char1 == '-' || sign_char1 == '+')
+        {
+            char after_sign = static_cast<char>(getchar());
+
+            if(after_sign=='\n')
+            {
+                std::cout<<"После знака (+/-) необходимо вводить число, например: -101: ";
+                error=false;
+            }
+            if(after_sign!= '1' && after_sign != '0')
+            {
+                check_istream();
+                error = true;
+                continue;
+            }
+            ungetc(after_sign, stdin);
+        }
         if(sign_char1 == '-') back_sign_of_input = -1;
         else if(sign_char1 == '+') back_sign_of_input = 1;
         else if (sign_char1 == '1' || sign_char1 == '0') ungetc(sign_char1, stdin);
