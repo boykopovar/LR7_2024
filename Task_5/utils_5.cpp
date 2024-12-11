@@ -118,9 +118,9 @@ void start_next_day()
                "Нажмите клавишу Enter, чтобы продолжить...\n";
     getch();
     barrel*  barrels = init_barrels(30);
-    print_barrels(barrels, 0,30);
+    print_barrels(barrels, 210,30);
     barrel final_tasters = read_dead(5);
-    int answer = find_barrel_by_dead(final_tasters, 0, 5, 30);
+    int answer = find_barrel_by_dead(final_tasters, 210, 5, 30);
     std::cout<<"\n-> Отравлена была бочка "<<answer<<" <-\nИгра окончена!\n";
 
     delete[] barrels;
@@ -216,34 +216,34 @@ void continue_first(int dead_group)
 }
 
 const bool combinations30[30][5] = {
-        {false, false, false, false, false},  // 1
-        {true,  false, false, false, false},  // 2
-        {false, true,  false, false, false},  // 3
-        {true,  true,  false, false, false},  // 4
-        {false, false, true,  false, false},  // 5
-        {true,  false, true,  false, false},  // 6
-        {false, true,  true,  false, false},  // 7
-        {true,  true,  true,  false, false},  // 8
-        {false, false, false, true,  false},  // 9
-        {true,  false, false, true,  false},  // 10
-        {false, true,  false, true,  false},  // 11
-        {true,  true,  false, true,  false},  // 12
-        {false, false, true,  true,  false},  // 13
-        {true,  false, true,  true,  false},  // 14
-        {false, true,  true,  true,  false},  // 15
-        {true,  true,  true,  true,  false},  // 16
-        {false, false, false, false, true},   // 17
-        {true,  false, false, false, true},   // 18
-        {false, true,  false, false, true},   // 19
-        {true,  true,  false, false, true},   // 20
-        {false, false, true,  false, true},   // 21
-        {true,  false, true,  false, true},   // 22
-        {false, true,  true,  false, true},   // 23
-        {true,  true,  true,  false, true},   // 24
-        {false, false, false, true,  true},   // 25
-        {true,  false, false, true,  true},   // 26
-        {false, true,  false, true,  true},   // 27
-        {true,  true,  false, true,  true},   // 28
-        {false, false, true,  true,  true},   // 29
-        {true,  false, true,  true,  true}    // 30
+        {false, false, false, false, false},
+        {true,  false, false, false, false},
+        {false, true,  false, false, false},
+        {true,  true,  false, false, false},
+        {false, false, true,  false, false},
+        {true,  false, true,  false, false},
+        {false, true,  true,  false, false},
+        {true,  true,  true,  false, false},
+        {false, false, false, true,  false},
+        {true,  false, false, true,  false},
+        {false, true,  false, true,  false},
+        {true,  true,  false, true,  false},
+        {false, false, true,  true,  false},
+        {true,  false, true,  true,  false},
+        {false, true,  true,  true,  false},
+        {true,  true,  true,  true,  false},
+        {false, false, false, false, true},
+        {true,  false, false, false, true},
+        {false, true,  false, false, true},
+        {true,  true,  false, false, true},
+        {false, false, true,  false, true},
+        {true,  false, true,  false, true},
+        {false, true,  true,  false, true},
+        {true,  true,  true,  false, true},
+        {false, false, false, true,  true},
+        {true,  false, false, true,  true},
+        {false, true,  false, true,  true},
+        {true,  true,  false, true,  true},
+        {false, false, true,  true,  true},
+        {true,  false, true,  true,  true}
 };
