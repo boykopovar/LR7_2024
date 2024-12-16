@@ -3,14 +3,13 @@
 #include "task_3.h"
 #include "../global_utils.h"
 
-
+// O(n)
 char* get_custom_number(int basic)
 {
     long long int len =10;
     char* str = new char[len];
     for(long long int i=0;;++i)
     {
-
         char c = static_cast<char>(getchar());
         if (c<'0' || c>'z')
         if(i>=len)
@@ -41,15 +40,16 @@ char* get_custom_number(int basic)
     return str;
 }
 
-char* sum_custom_numbers(char* number1, char* number2, int basic)
+// O(n) + O(2longer)
+char* sum_custom_numbers(char*& number1, char*& number2, int basic)
 {
     long long int len_num1 = strlen(number1), len_num2 = strlen(number2);
     long long int max_len = (len_num1 >= len_num2) ? len_num1 + 1 : len_num2 + 1;
-    char* result = new char[max_len];
+    char* result = new char[max_len+1];
     result[max_len]='\0';
 
-    longer_number(number1, max_len);
-    longer_number(number2, max_len);
+    longer_number(number1, max_len); // O(max_len)
+    longer_number(number2, max_len); // O(max_len)
 
     int buf = 0;
     for(long long int i = max_len-1;i>=0;--i)
@@ -67,15 +67,16 @@ char* sum_custom_numbers(char* number1, char* number2, int basic)
     return result;
 }
 
-char* diff_custom_numbers(char* number1, char* number2, int basic)
+// O(n) + O(2longer)
+char* diff_custom_numbers(char*& number1, char*& number2, int basic)
 {
     long long int len_num1 = strlen(number1), len_num2 = strlen(number2);
     long long int max_len = (len_num1 >= len_num2) ? len_num1 + 1 : len_num2 + 1;
-    char* result = new char[max_len];
+    char* result = new char[max_len+1];
     result[max_len]='\0';
 
-    longer_number(number1, max_len);
-    longer_number(number2, max_len);
+    longer_number(number1, max_len); // O(max_len)
+    longer_number(number2, max_len); // O(max_len)
 
     int buf = 0;
     for(long long int i = max_len-1;i>=0;--i)
@@ -93,6 +94,7 @@ char* diff_custom_numbers(char* number1, char* number2, int basic)
     return result;
 }
 
+// O(1)
 int char_to_value(char c)
 {
     if(c>='0' && c<= '9')return c-'0';
@@ -101,6 +103,7 @@ int char_to_value(char c)
     else return -1;
 }
 
+// O(1)
 char value_to_char(int value)
 {
     if(value>=0 && value<= 9)return static_cast<char>(value+'0');

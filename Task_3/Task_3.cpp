@@ -3,13 +3,12 @@
 #include"task_3.h"
 #include "../global_utils.h"
 
+
 void task3()
 {
-    setlocale(LC_ALL, "Russian"); //удалить
-
     std::cout<<"----------------------------------------------------------------------------------\n";
-    std::cout<<"| Выполнил   Вариант   Суть                                                      |\n";
-    std::cout<<"| Бойко А.О. 2         Сложение и вычитание чисел в разных системах исчисления   |\n";
+    std::cout<<"| Р’С‹РїРѕР»РЅРёР»   Р’Р°СЂРёР°РЅС‚   РЎСѓС‚СЊ                                                      |\n";
+    std::cout<<"| Р‘РѕР№РєРѕ Рђ.Рћ. 2         РЎР»РѕР¶РµРЅРёРµ Рё РІС‹С‡РёС‚Р°РЅРёРµ С‡РёСЃРµР» РІ СЂР°Р·РЅС‹С… СЃРёСЃС‚РµРјР°С… РёСЃС‡РёСЃР»РµРЅРёСЏ   |\n";
     std::cout<<"----------------------------------------------------------------------------------\n\n";
 
     int basic = 0;
@@ -20,17 +19,17 @@ void task3()
 
     while(basic<=1)
     {
-        std::cout << "Введите основание системы исчисления: ";
+        std::cout << "Р’РІРµРґРёС‚Рµ РѕСЃРЅРѕРІР°РЅРёРµ СЃРёСЃС‚РµРјС‹ РёСЃС‡РёСЃР»РµРЅРёСЏ: ";
         std::cin>>basic;
         if(!check_istream() || basic <= 1 || basic >55)
         {
             basic = 0;
-            std::cout<<"Ошибка! Основание может быть от двух до 55\n";
+            std::cout<<"РћС€РёР±РєР°! РћСЃРЅРѕРІР°РЅРёРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕС‚ РґРІСѓС… РґРѕ 55\n";
         }
     }
     while(true)
     {
-        std::cout<<"Введите первое число: ";
+        std::cout<<"Р’РІРµРґРёС‚Рµ РїРµСЂРІРѕРµ С‡РёСЃР»Рѕ: ";
 
         sign1 = static_cast<char>(std::cin.get());
         if(sign1 != '+' && sign1!= '-')std::cin.unget();
@@ -46,14 +45,14 @@ void task3()
     }
     while(true)
     {
-        std::cout<<"Выберите операцию (+/-): ";
+        std::cout<<"Р’С‹Р±РµСЂРёС‚Рµ РѕРїРµСЂР°С†РёСЋ (+/-): ";
         operation = static_cast<char>(getchar());
         if(!check_istream())continue;
         if(operation == '+' || operation =='-')break;
     }
     while(true)
     {
-        std::cout<<"Введите второе число: ";
+        std::cout<<"Р’РІРµРґРёС‚Рµ РІС‚РѕСЂРѕРµ С‡РёСЃР»Рѕ: ";
         number2 = get_custom_number(basic);
         if(number2[0]=='\0')delete[] number2;
         else break;
@@ -65,7 +64,7 @@ void task3()
         if(sign1==-1)
         {
             result = sum_custom_numbers(number2, number1, basic);
-            std::cout<<'\n'<<'-'<<number1<<" - "<<number2<<" = -"<<result<<" ("<<basic<<")\n";
+            std::cout<<'\n'<<'-'<<number1<<" - "<<number2<<" = - "<<result<<" ("<<basic<<")\n";
         }
         else if(is_bigger(number2, number1))
         {
@@ -85,12 +84,12 @@ void task3()
             if(is_bigger(number1, number2))
             {
                 result = diff_custom_numbers(number1, number2, basic);
-                std::cout<<"\n-"<<number1<<" + "<<number2<<" = -"<<result<<" ("<<basic<<")\n";
+                std::cout<<"\n- "<<number1<<" + "<<number2<<" = -"<<result<<" ("<<basic<<")\n";
             }
             else if(is_bigger(number2, number1))
             {
                 result = diff_custom_numbers(number2, number1, basic);
-                std::cout << "\n-" << number1 << " + " << number2 << " = " << result << " (" << basic << ")\n";
+                std::cout << "\n- " << number1 << " + " << number2 << " = " << result << " (" << basic << ")\n";
             }
             else
             {
@@ -103,6 +102,7 @@ void task3()
             std::cout << '\n' << number1 << " + " << number2 << " = " << result << " (" << basic << ")\n";
         }
     }
-
+    delete[] number1;
+    delete[] number2;
     delete[] result;
 }

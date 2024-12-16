@@ -1,5 +1,5 @@
 #pragma once
-#include<conio.h>
+
 
 
 typedef struct barrel

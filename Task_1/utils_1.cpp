@@ -3,7 +3,7 @@
 #include"task_1.h"
 #include"../global_utils.h"
 
-
+//O(len)
 char* from_add_to_reverse(char* number)
 {
     if(number[0] == '0') return number;
@@ -12,7 +12,7 @@ char* from_add_to_reverse(char* number)
     return number;
 }
 
-
+//O(len)
 char* minus_one(char* number)
 {
     long long int len = strlen(number);

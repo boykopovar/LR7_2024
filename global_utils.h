@@ -1,7 +1,6 @@
 #pragma once
 #include<iostream>
 #include<cstring>
-#include<clocale>
 
 
 bool check_istream();

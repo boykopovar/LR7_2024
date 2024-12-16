@@ -5,7 +5,7 @@ project(LR6)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_COMPILER g++)
-# set(CMAKE_CXX_FLAGS "-fsanitize=address")
+set(CMAKE_CXX_FLAGS "-fsanitize=address")
 
 
 add_executable(LR6 ${SOURCES}

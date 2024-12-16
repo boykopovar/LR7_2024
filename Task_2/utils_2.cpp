@@ -3,7 +3,7 @@
 #include "task_2.h"
 #include "../global_utils.h"
 
-
+// O(max_len)
 char* sum_of_binary(char* number_1, int sign_1, char* number_2, int sign_2)
 {
     long long int len_num1 = strlen(number_1), len_num2 = strlen(number_2);
@@ -42,6 +42,7 @@ char* sum_of_binary(char* number_1, int sign_1, char* number_2, int sign_2)
     return answer;
 }
 
+// O(len)
 char* bitwise_sum(const char* num1, const char* num2)
 {
     unsigned int len = strlen(num1), len2 = strlen(num2);
@@ -70,6 +71,7 @@ char* bitwise_sum(const char* num1, const char* num2)
     return sum;
 }
 
+//O(len)
 void plus_one(char*& number)
 {
     long long int len = strlen(number);
@@ -87,13 +89,14 @@ void plus_one(char*& number)
     }
 }
 
+// O(len)
 char* input_bin_number(int& back_sign_of_input)
 {
     char* result_number;
     bool error = false;
     while(true)
     {
-        if(error)std::cout<<"Íåïğàâèëüíûé ââîä, ïîâòîğèòå ïîïûòêó: ";
+        if(error)std::cout<<"ĞĞµĞ¿Ñ€Ğ°Ğ²Ğ¸Ğ»ÑŒĞ½Ñ‹Ğ¹ Ğ²Ğ²Ğ¾Ğ´, Ğ¿Ğ¾Ğ²Ñ‚Ğ¾Ñ€Ğ¸Ñ‚Ğµ Ğ¿Ğ¾Ğ¿Ñ‹Ñ‚ĞºÑƒ: ";
         char sign_char1 = static_cast<char>(getchar());
         if(sign_char1 == '-' || sign_char1 == '+')
         {
@@ -101,7 +104,7 @@ char* input_bin_number(int& back_sign_of_input)
 
             if(after_sign=='\n')
             {
-                std::cout<<"Ïîñëå çíàêà (+/-) íåîáõîäèìî ââîäèòü ÷èñëî, íàïğèìåğ: -101: ";
+                std::cout<<"ĞŸĞ¾ÑĞ»Ğµ Ğ·Ğ½Ğ°ĞºĞ° (+/-) Ğ½ĞµĞ¾Ğ±Ñ…Ğ¾Ğ´Ğ¸Ğ¼Ğ¾ Ğ²Ğ²Ğ¾Ğ´Ğ¸Ñ‚ÑŒ Ñ‡Ğ¸ÑĞ»Ğ¾, Ğ½Ğ°Ğ¿Ñ€Ğ¸Ğ¼ĞµÑ€: -101: ";
                 error=false;
             }
             if(after_sign!= '1' && after_sign != '0')
@@ -118,7 +121,7 @@ char* input_bin_number(int& back_sign_of_input)
         else
         {
             check_istream();
-            std::cout<<"Ïåğâûì ñèìâîëîì ââåäèòå çíàê (+/-), íàïğèìåğ: -101\n";
+            std::cout<<"ĞŸĞµÑ€Ğ²Ñ‹Ğ¼ ÑĞ¸Ğ¼Ğ²Ğ¾Ğ»Ğ¾Ğ¼ Ğ²Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ·Ğ½Ğ°Ğº (+/-), Ğ½Ğ°Ğ¿Ñ€Ğ¸Ğ¼ĞµÑ€: -101\n";
             break;
         }
         result_number = get_bin_line();

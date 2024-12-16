@@ -3,7 +3,7 @@
 #include"../global_utils.h"
 
 
-
+//O(tasters_count)
 group create_group(int count_barrels, const int* tasters, int tasters_count)
 {
     group current_group;
@@ -23,6 +23,7 @@ group create_group(int count_barrels, const int* tasters, int tasters_count)
     return current_group;
 }
 
+//O(tasters_count)
 group create_barrel(int count_barrels, const int* tasters, int tasters_count)
 {
     group current_group;
@@ -42,33 +43,34 @@ group create_barrel(int count_barrels, const int* tasters, int tasters_count)
     return current_group;
 }
 
+//O(groups_count * tasters_count) Ğ² Ğ·Ğ°Ğ´Ğ°Ñ‡Ğµ Ñ„Ğ°ĞºÑ‚Ğ¸Ñ‡ĞµÑĞºĞ¸ 30
 group* init_groups()
 {
     int index = 0;
     auto* groups = new group[30];
 
-    // ïî 16 áî÷åê
+    // Ğ¿Ğ¾ 16 Ğ±Ğ¾Ñ‡ĞµĞº
     int tasters_16[][1] = {{1}, {2}, {3}, {4}, {5}};
     for (int i = 0; i < 5; ++i)
     {
         groups[index++] = create_group(16, tasters_16[i], 1);
     }
 
-    // ïî 8 áî÷åê
+    // Ğ¿Ğ¾ 8 Ğ±Ğ¾Ñ‡ĞµĞº
     int tasters_8[][2] = {{1, 2}, {1, 3}, {1, 4}, {1, 5}, {2, 3}, {2, 4}, {2, 5}, {3, 4}, {3, 5}, {4, 5}};
     for (int i = 0; i < 10; ++i)
     {
         groups[index++] = create_group(8, tasters_8[i], 2);
     }
 
-    //ïî 4
+    //Ğ¿Ğ¾ 4
     int tasters_4[][3] = {{1, 2, 3}, {1, 2, 4}, {1, 2, 5}, {1, 3, 4}, {1, 3, 5}, {1, 4, 5}, {2, 3, 4}, {2, 3, 5}, {2, 4, 5}, {3, 4, 5}};
     for (int i = 0; i < 10; ++i)
     {
         groups[index++] = create_group(4, tasters_4[i], 3);
     }
 
-    // ïî 2
+    // Ğ¿Ğ¾ 2
     int tasters_2[][4] = {{1, 2, 3, 4}, {1, 2, 3, 5}, {1, 2, 4, 5}, {1, 3, 4, 5}, {2, 3, 4, 5}};
     for (int i = 0; i < 5; ++i)
     {
@@ -77,6 +79,7 @@ group* init_groups()
     return groups;
 }
 
+// O(count)
 barrel* init_barrels(int count)
 {
 
@@ -92,12 +95,13 @@ barrel* init_barrels(int count)
     return barrels;
 }
 
+// O(count)
 barrel read_dead(int count)
 {
     barrel tasters;
     for(int i = 1;i<=count;++i)
     {
-        std::cout<<"\nÌ¸ğòâ ëè ĞÀÁ "<<i<<"?\n1 - Äà\n0 - Íåò\n";
+        std::cout<<"\nĞœÑ‘Ñ€Ñ‚Ğ² Ğ»Ğ¸ Ğ ĞĞ‘ "<<i<<"?\n1 - Ğ”Ğ°\n0 - ĞĞµÑ‚\n";
         bool alive = false;
         std::cin>>alive;
         if(!check_istream())alive = false;

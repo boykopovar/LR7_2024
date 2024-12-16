@@ -1,6 +1,7 @@
 #include <iostream>
 #include "global_utils.h"
 
+// O(n)
 bool check_istream()
 {
     char c = static_cast<char>(getchar());
@@ -16,6 +17,7 @@ bool check_istream()
     else return true;
 }
 
+// O(n)
 char* get_bin_line()
 {
     long long int len =10;
@@ -48,6 +50,7 @@ char* get_bin_line()
     return str;
 }
 
+// O(n)
 char* get_number_line()
 {
     long long int len =10;
@@ -80,6 +83,7 @@ char* get_number_line()
     return str;
 }
 
+// O(n)
 void reverse_bits(char*& number)
 {
     long long int len = strlen(number);
@@ -89,6 +93,7 @@ void reverse_bits(char*& number)
     }
 }
 
+// O(n)
 void clean_zeroes(char*& number)
 {
     //std::cout<<"\nIN:"<<number;
@@ -106,6 +111,7 @@ void clean_zeroes(char*& number)
 
     long long int new_len = len-first_index;
     char* clean_result = new char[new_len+1];
+    clean_result[new_len]='\0';
 
     for(int j =0;j<new_len;++j)
     {
@@ -118,6 +124,7 @@ void clean_zeroes(char*& number)
     //std::cout<<"\nOUT:"<<number<<'\n';
 }
 
+// O(n + m) нельзя однозначно выбрать n или m
 void longer_number(char*& input_number, long long int target_len)
 {
     long long int input_len = strlen(input_number);
@@ -135,24 +142,25 @@ void longer_number(char*& input_number, long long int target_len)
         result_number[i] = input_number[i-len_delta];
     }
     result_number[target_len]='\0';
-
-    delete[] input_number;
     input_number = result_number;
 }
 
+// O(n)
 void char_to_start(char symbol, char*& str)
 {
-    long long int len = strlen(str) + 2;
-    char* new_str = new char[len];
+    long long int len = strlen(str);
+    char* new_str = new char[len+2];
     new_str[0] = symbol;
     for(long long int i=0;i<len;++i)
     {
         new_str[i+1] = str[i];
     }
     delete[] str;
+    new_str[len+1] ='\0';
     str = new_str;
 }
 
+// O(n) + O(2longer)
 bool is_bigger(char* number1, char* number2)
 {
     long long int max_len;
@@ -162,10 +170,12 @@ bool is_bigger(char* number1, char* number2)
     if(len_num1==len_num2)max_len = len_num1;
     else max_len = (len_num1 >= len_num2) ? len_num1 + 1 : len_num2 + 1;
 
-    char* num1 = new char[max_len];
+    char* num1 = new char[max_len+1];
+    char* num2 = new char[max_len+1];
+
     strcpy(num1, number1);
-    char* num2 = new char[max_len];
     strcpy(num2, number2);
+
     longer_number(num1, max_len);
     longer_number(num2, max_len);
 

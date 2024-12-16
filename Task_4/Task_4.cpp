@@ -6,11 +6,9 @@
 
 void task4()
 {
-    setlocale(LC_ALL, "Russian"); //удалить
-
     std::cout<<"-------------------------------------------------------------------------\n";
-    std::cout<<"| Выполнил   Вариант   Суть                                             |\n";
-    std::cout<<"| Бойко А.О. 2         Нахождение остатка от деления на простые числа   |\n";
+    std::cout<<"| Р’С‹РїРѕР»РЅРёР»   Р’Р°СЂРёР°РЅС‚   РЎСѓС‚СЊ                                             |\n";
+    std::cout<<"| Р‘РѕР№РєРѕ Рђ.Рћ. 2         РќР°С…РѕР¶РґРµРЅРёРµ РѕСЃС‚Р°С‚РєР° РѕС‚ РґРµР»РµРЅРёСЏ РЅР° РїСЂРѕСЃС‚С‹Рµ С‡РёСЃР»Р°   |\n";
     std::cout<<"-------------------------------------------------------------------------\n\n";
 
     int div=0;
@@ -18,8 +16,8 @@ void task4()
     bool input_error = false;
     while(true)
     {
-        if(input_error)std::cout<<"Ошибка! Введите натуральное число: \n";
-        else std::cout<<"Введите число: ";
+        if(input_error)std::cout<<"РћС€РёР±РєР°! Р’РІРµРґРёС‚Рµ РЅР°С‚СѓСЂР°Р»СЊРЅРѕРµ С‡РёСЃР»Рѕ: \n";
+        else std::cout<<"Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ: ";
         number = get_number_line();
         if(number[0]=='\0')
         {
@@ -32,16 +30,16 @@ void task4()
     input_error=false;
     while(div<=0)
     {
-        if(input_error)std::cout<<"Ошибка! Введитите простой делитель: ";
-        else std::cout<<"Введитите простой делитель: ";
+        if(input_error)std::cout<<"РћС€РёР±РєР°! Р’РІРµРґРёС‚РёС‚Рµ РїСЂРѕСЃС‚РѕР№ РґРµР»РёС‚РµР»СЊ: ";
+        else std::cout<<"Р’РІРµРґРёС‚РёС‚Рµ РїСЂРѕСЃС‚РѕР№ РґРµР»РёС‚РµР»СЊ: ";
         std::cin>>div;
         if(!check_istream())div=0;
         input_error=true;
     }
 
-    if(is_divisible(number, div)) std::cout<<"\nЧисло "<<number<<" *ДЕЛИТСЯ* на число "<<div<<" без остатка.";
-    else std::cout<<"\nЧисло "<<number<<" *НЕ ДЕЛИТСЯ* на число "<<div<<" без остатка.\n";
-    //std::cout<<"\nПравильный ответ "<<number<<" % "<<div<<" = "<<std::atoll(number)%static_cast<long long>(div)<<'\n';
+    if(is_divisible(number, div)) std::cout<<"\nР§РёСЃР»Рѕ "<<number<<" *Р”Р•Р›РРўРЎРЇ* РЅР° С‡РёСЃР»Рѕ "<<div<<" Р±РµР· РѕСЃС‚Р°С‚РєР°.";
+    else std::cout<<"\nР§РёСЃР»Рѕ "<<number<<" *РќР• Р”Р•Р›РРўРЎРЇ* РЅР° С‡РёСЃР»Рѕ "<<div<<" Р±РµР· РѕСЃС‚Р°С‚РєР°.\n";
+    //std::cout<<"\nРџСЂР°РІРёР»СЊРЅС‹Р№ РѕС‚РІРµС‚ "<<number<<" % "<<div<<" = "<<std::atoll(number)%static_cast<long long>(div)<<'\n';
 
     delete[] number;
 }
