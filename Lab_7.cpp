@@ -5,7 +5,7 @@
 #include "./Task_2/task_2.h"
 #include "./Task_3/task_3.h"
 #include "./Task_4/task_4.h"
-#include "./Task_5/task_5.h"
+#include "Task_5/include/task_5.h"
 
 int main()
 {
